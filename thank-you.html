@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You</title>
+  <style>
+    body { background:#111; color:#fff; font-family:sans-serif; text-align:center; padding-top:60px; }
+    .key { margin-top:20px; font-size:1.5em; background:#222; padding:12px 20px; border:2px solid #0f0; display:inline-block; letter-spacing:1px; }
+  </style>
+</head>
+<body>
+  <h1>✅ Thank you for your purchase!</h1>
+  <p>Your license key:</p>
+  <div class="key" id="key">Loading...</div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("key").textContent = params.get("key") || "UNKNOWN";
+  </script>
+</body>
+</html>
