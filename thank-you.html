@@ -1,21 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thank You</title>
+  <meta charset="UTF-8">
+  <title>Thank You for Your Purchase</title>
   <style>
-    body { background:#111; color:#fff; font-family:sans-serif; text-align:center; padding-top:60px; }
-    .key { margin-top:20px; font-size:1.5em; background:#222; padding:12px 20px; border:2px solid #0f0; display:inline-block; letter-spacing:1px; }
+    body {
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background-color: #f7f7f7;
+    }
+
+    .box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+
+    h1 {
+      color: #2a7ae2;
+      font-size: 1.8rem;
+    }
+
+    #license {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      padding: 0.7rem 1.2rem;
+      background-color: #eee;
+      border-radius: 8px;
+      display: inline-block;
+      word-break: break-word;
+    }
+
+    button {
+      margin: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #copy-btn {
+      background-color: #0078d4;
+      color: white;
+    }
+
+    #open-settings-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    p.small {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 1rem;
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>✅ Thank you for your purchase!</h1>
-  <p>Your license key:</p>
-  <div class="key" id="key">Loading...</div>
+  <div class="box">
+    <h1>✅ Thank You for Your Purchase!</h1>
+    <p>Your license key:</p>
+    <div id="license">(loading...)</div>
+    <div>
+      <button id="copy-btn">Copy License</button>
+      <button id="open-settings-btn">Open Extension Settings</button>
+    </div>
+    <p class="small">Use this key in the extension's settings page to unlock Pro features.</p>
+  </div>
+
   <script>
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("key").textContent = params.get("key") || "UNKNOWN";
+    const key = new URLSearchParams(window.location.search).get("key");
+    const licenseBox = document.getElementById("license");
+
+    if (key) {
+      licenseBox.textContent = key;
+    } else {
+      licenseBox.textContent = "⚠️ No license key found in URL.";
+    }
+
+    document.getElementById("copy-btn").addEventListener("click", () => {
+      navigator.clipboard.writeText(key || "").then(() => {
+        alert("License key copied to clipboard!");
+      }).catch(() => {
+        alert("Failed to copy. Please copy it manually.");
+      });
+    });
+
+    document.getElementById("open-settings-btn").addEventListener("click", () => {
+      try {
+        chrome.runtime.sendMessage({ action: "open-options" });
+      } catch {
+        alert("To open the extension settings, click the puzzle icon in your browser and then click on Custom Text Inputs.");
+      }
+    });
   </script>
 </body>
 </html>
