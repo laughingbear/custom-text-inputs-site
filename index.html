@@ -20,8 +20,21 @@
       text-align: center;
     }
 
+    .header-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .header-logo img {
+      width: 36px;
+      height: 36px;
+    }
+
     header h1 {
-      margin: 0;
+      margin: 10px 0 0;
       font-size: 2rem;
     }
 
@@ -71,6 +84,14 @@
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-buttons a img {
+      width: 20px;
+      height: 20px;
     }
 
     .cta-buttons a:hover {
@@ -94,14 +115,21 @@
 <body>
 
   <header>
-    <h1>Custom Text Inputs</h1>
+    <div class="header-logo">
+      <img src="logo.png" alt="Logo" />
+      <h1>Custom Text Inputs</h1>
+    </div>
     <p>Save time. Paste smarter. One right-click is all it takes.</p>
   </header>
 
   <main>
     <div class="cta-buttons">
-      <a href="https://chrome.google.com/webstore/detail/custom-text-inputs/gacponfghjpmfofhnglnjbebggdkpamc" target="_blank">➕ Add to Chrome</a>
-      <a href="https://buy.stripe.com/4gMbJ13DN7Bbbrv36Ads400" target="_blank">💎 Upgrade to Pro</a>
+      <a href="https://chrome.google.com/webstore/detail/custom-text-inputs/gacponfghjpmfofhnglnjbebggdkpamc" target="_blank">
+        ➕ Add to Chrome
+      </a>
+      <a href="https://buy.stripe.com/4gMbJ13DN7Bbbrv36Ads400" target="_blank">
+        <img src="crown.png" alt="Crown Icon" /> Upgrade to Pro
+      </a>
     </div>
 
     <img src="demo.gif" alt="Extension Demo" class="screenshot"/>
@@ -132,3 +160,4 @@
 
 </body>
 </html>
+
