@@ -26,11 +26,13 @@
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
+      margin-bottom: 12px;
     }
 
     .header-logo img {
       width: 64px;
       height: 64px;
+      filter: brightness(1.2) contrast(1.1);
     }
 
     header h1 {
@@ -166,7 +168,6 @@
   <script>
     const EXTENSION_ID = "gacponfghjpmfofhnglnjbebggdkpamc";
 
-    // Only run if the user is using Chrome
     if (typeof chrome !== "undefined" && chrome.runtime) {
       chrome.runtime.sendMessage(
         EXTENSION_ID,
@@ -188,4 +189,3 @@
   </script>
 </body>
 </html>
-
