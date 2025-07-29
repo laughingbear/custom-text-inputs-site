@@ -79,10 +79,15 @@
       margin: 40px 0;
     }
 
-    .gallery img {
+    .gallery a img {
       width: 100%;
       border: 1px solid #ccc;
       border-radius: 6px;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery a:hover img {
+      transform: scale(1.02);
     }
 
     .cta-buttons {
@@ -185,11 +190,11 @@
     </div>
 
     <div class="gallery">
-      <img src="screenshots/gallery-1.png" alt="Gallery screenshot 1" />
-      <img src="screenshots/gallery-2.png" alt="Gallery screenshot 2" />
-      <img src="screenshots/gallery-3.png" alt="Gallery screenshot 3" />
-      <img src="screenshots/gallery-4.png" alt="Gallery screenshot 4" />
-      <img src="screenshots/gallery-5.png" alt="Gallery screenshot 5" />
+      <a href="screenshots/gallery-1.png" target="_blank"><img src="screenshots/gallery-1.png" alt="Gallery screenshot 1" /></a>
+      <a href="screenshots/gallery-2.png" target="_blank"><img src="screenshots/gallery-2.png" alt="Gallery screenshot 2" /></a>
+      <a href="screenshots/gallery-3.png" target="_blank"><img src="screenshots/gallery-3.png" alt="Gallery screenshot 3" /></a>
+      <a href="screenshots/gallery-4.png" target="_blank"><img src="screenshots/gallery-4.png" alt="Gallery screenshot 4" /></a>
+      <a href="screenshots/gallery-5.png" target="_blank"><img src="screenshots/gallery-5.png" alt="Gallery screenshot 5" /></a>
     </div>
   </main>
 
