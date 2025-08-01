@@ -168,6 +168,170 @@
       </a>
     </div>
 
+    <div class="features">
+      <div>
+        <h3>📋 Paste Anywhere</h3>
+        <p>Right-click any input box and insert your saved text instantly. Works in Gmail, Salesforce, Five9, LinkedIn, and more.</p>
+      </div>
+      <div>
+        <h3>🔒 Private by Design</h3>
+        <p>No logins. No tracking. All your snippets are saved directly to your browser — nothing leaves your device.</p>
+      </div>
+      <div>
+        <h3>🆓 Free & Pro Versions</h3>
+        <p>Free users can save 3 snippets. Pro users unlock 15 snippet slots with a one-time payment — no subscriptions.</p>
+      </div>
+      <div>
+        <h3>🎯 Built for Speed</h3>
+        <p>Minimal footprint. Loads instantly. Built for professionals who make hundreds of calls or emails every day.</p>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <a href="screenshots/gallery-1.png" target="_blank"><img src="screenshots/gallery-1.png" alt="Gallery screenshot 1" /></a>
+      <a href="screenshots/gallery-2.png" target="_blank"><img src="screenshots/gallery-2.png" alt="Gallery screenshot 2" /></a>
+      <a href="screenshots/gallery-3.png" target="_blank"><img src="screenshots/gallery-3.png" alt="Gallery screenshot 3" /></a>
+      <a href="screenshots/gallery-4.png" target="_blank"><img src="screenshots/gallery-4.png" alt="Gallery screenshot 4" /></a>
+      <a href="screenshots/gallery-5.png" target="_blank"><img src="screenshots/gallery-5.png" alt="Gallery screenshot 5" /></a>
+    </div>
+
+    <!-- Moved GIFs below the gallery -->
+    <img src="custom-text-inputs-demo-part1.gif" alt="Extension Demo Part 1" class="screenshot"/>
+    <img src="custom-text-inputs-demo-part2.gif" alt="Extension Demo Part 2" class="screenshot"/>
+  </main>
+
+  <footer>
+    © 2025 Custom Text Inputs. All rights reserved.
+  </footer>
+
+  <script>
+    const EXTENSION_ID = "gacponfghjpmfofhnglnjbebggdkpamc";
+
+    if (typeof chrome !== "undefined" && chrome.runtime) {
+      chrome.runtime.sendMessage(
+        EXTENSION_ID,
+        { action: "checkInstall" },
+        (response) => {
+          if (chrome.runtime.lastError || !response || !response.installed) {
+            console.log("Extension not installed");
+          } else {
+            const installBtn = document.getElementById("install-button");
+            if (installBtn) {
+              const installedNotice = document.createElement("span");
+              installedNotice.innerText = "✅ Installed — try it in any text box!";
+              installBtn.replaceWith(installedNotice);
+            }
+          }
+        }
+      );
+    }
+  </script>
+</body>
+</html>
+    }
+
+    .features div {
+      background: #f7f7f7;
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .gallery a img {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery a:hover img {
+      transform: scale(1.02);
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .cta-buttons a,
+    .cta-buttons span {
+      background: #0078d7;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-buttons a:hover {
+      background: #005bb5;
+    }
+
+    .cta-buttons span {
+      background: #28a745;
+    }
+
+    .cta-buttons img {
+      width: 20px;
+      height: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media (min-width: 700px) {
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-logo">
+      <img src="logo.png" alt="Logo" />
+      <h1>Custom Text Inputs</h1>
+    </div>
+    <p>Save time. Paste smarter. One right-click is all it takes.</p>
+  </header>
+
+  <main>
+    <div class="cta-buttons">
+      <a id="install-button" href="https://chrome.google.com/webstore/detail/custom-text-inputs/gacponfghjpmfofhnglnjbebggdkpamc" target="_blank">
+        ➕ Add to Chrome
+      </a>
+      <a href="https://buy.stripe.com/4gMbJ13DN7Bbbrv36Ads400" target="_blank">
+        <img src="crown.png" alt="Crown Icon" /> Upgrade to Pro
+      </a>
+    </div>
+
     <!-- Updated GIFs -->
     <img src="custom-text-inputs-demo-part1.gif" alt="Extension Demo Part 1" class="screenshot"/>
     <img src="custom-text-inputs-demo-part2.gif" alt="Extension Demo Part 2" class="screenshot"/>
