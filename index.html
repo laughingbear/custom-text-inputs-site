@@ -16,7 +16,7 @@
     header {
       background: #0a0a23;
       color: white;
-      padding: 30px 20px 20px;
+      padding: 30px 20px;
       text-align: center;
     }
 
@@ -26,7 +26,7 @@
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 4px;
+      margin-bottom: 12px;
     }
 
     .header-logo img {
@@ -36,12 +36,12 @@
     }
 
     header h1 {
-      margin: 6px 0 0;
+      margin: 10px 0 0;
       font-size: 2rem;
     }
 
     header p {
-      margin: 6px 0 0;
+      margin: 10px 0 0;
       font-size: 1.1rem;
     }
 
@@ -95,7 +95,7 @@
       flex-wrap: wrap;
       gap: 15px;
       justify-content: center;
-      margin: 40px 0 20px;
+      margin: 40px 0;
     }
 
     .cta-buttons a,
@@ -124,20 +124,15 @@
       height: 20px;
     }
 
-    .price-note {
+    .trust-banner {
+      background: #e6f9ed;
       text-align: center;
-      font-size: 1.05rem;
+      padding: 20px;
       font-weight: bold;
-      color: #444;
-      margin-top: 0;
-    }
-
-    .privacy-note {
-      text-align: center;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #2c7a2c;
-      margin-top: 30px;
+      font-size: 1.1rem;
+      color: #1a4f2c;
+      border-top: 1px solid #c7eed8;
+      border-bottom: 1px solid #c7eed8;
     }
 
     footer {
@@ -184,9 +179,8 @@
       </a>
     </div>
 
-    <!-- Pricing reassurance -->
-    <p class="price-note">
-      One-time payment. Lifetime Pro access. No subscriptions.
+    <p style="text-align:center; font-size: 1.1rem; font-weight: bold;">
+      One‑time payment. Lifetime Pro access. No subscriptions.
     </p>
 
     <div class="features">
@@ -216,16 +210,16 @@
       <a href="screenshots/gallery-5.png" target="_blank"><img src="screenshots/gallery-5.png" alt="Gallery screenshot 5" /></a>
     </div>
 
-    <!-- Headline + GIFs -->
-    <h2 style="text-align: center; margin-top: 60px;">🎥 See Custom Text Inputs in Action</h2>
-    <img src="custom-text-inputs-demo-part1.gif" alt="Extension Demo Part 1" class="screenshot"/>
-    <img src="custom-text-inputs-demo-part2.gif" alt="Extension Demo Part 2" class="screenshot"/>
-
-    <!-- Privacy reassurance -->
-    <p class="privacy-note">
-      ✅ No tracking · No logins · All data stored securely in your browser
-    </p>
+    <h3 style="text-align:center; font-size: 1.2rem; margin-top: 60px;">
+      🎥 See Custom Text Inputs in Action
+    </h3>
+    <img src="demo1.gif" alt="Demo Part 1" class="screenshot" />
+    <img src="demo2.gif" alt="Demo Part 2" class="screenshot" />
   </main>
+
+  <section class="trust-banner">
+    ✅ No tracking · No logins · All data stored securely in your browser
+  </section>
 
   <footer>
     © 2025 Custom Text Inputs. All rights reserved.
