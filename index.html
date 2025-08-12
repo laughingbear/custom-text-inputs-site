@@ -23,6 +23,29 @@
   <meta name="twitter:description" content="Paste snippets anywhere in Chrome with one right-click. Free (3 slots) or Pro (15 slots, one-time).">
   <meta name="twitter:image" content="logo.png">
 
+  <!-- Structured Data (no tracking) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Custom Text Inputs",
+    "applicationCategory": "BrowserExtension",
+    "operatingSystem": "Chrome OS, Windows, macOS, Linux",
+    "description": "A fast, privacy-first Chrome text expander and snippet manager. Save and paste your most-used text snippets anywhere you type.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "screenshot": [
+      "screenshots/gallery-1.png",
+      "screenshots/gallery-2.png",
+      "screenshots/gallery-3.png"
+    ],
+    "url": "https://chrome.google.com/webstore/detail/custom-text-inputs/gacponfghjpmfofhnglnjbebggdkpamc"
+  }
+  </script>
+
   <style>
     :root{
       --bg:#ffffff; --ink:#222; --muted:#666; --brand:#0a0a23;
@@ -58,9 +81,6 @@
     .gallery a:hover img{transform:scale(1.01)}
     .caption{font-size:.9rem; color:var(--muted); margin-top:6px}
 
-    .demo-title{text-align:center; font-size:1.15rem; margin-top:54px}
-    .screenshot{max-width:100%; border:1px solid var(--border); border-radius:10px; margin:16px auto 0; display:block}
-
     footer{border-top:1px solid var(--border); text-align:center; padding:22px; font-size:.92rem; color:var(--muted)}
     .footer-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:8px}
 
@@ -80,8 +100,8 @@
       <img class="logo" src="logo.png" alt="Custom Text Inputs logo">
       <h1>Custom Text Inputs – Chrome Text Expander & Snippet Manager</h1>
     </div>
-    <p class="subhead">Save time. Paste smarter. One right-click is all it takes.</p>
-    <p class="keyword-sub">A fast, privacy-first Chrome text expander. Save and paste your most-used snippets anywhere you type — Gmail, Google Docs, LinkedIn, Salesforce, and more.</p>
+    <p class="subhead">Save time. Paste smarter. One right‑click is all it takes.</p>
+    <p class="keyword-sub">A fast, privacy‑first Chrome text expander. Save and paste your most‑used snippets anywhere you type — Gmail, Google Docs, LinkedIn, Salesforce, and more.</p>
   </header>
 
   <main>
@@ -94,6 +114,7 @@
         rel="noopener"
         aria-label="Add Custom Text Inputs to Chrome (opens Chrome Web Store)"
       >
+        <!-- Inline Chrome icon -->
         <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="40"></circle><path d="M16 80a128 128 0 0 1 224 0H128a48 48 0 0 0-41.6 24Z"></path><path d="M240 80a128 128 0 0 1-48 152l-64-112a48 48 0 0 0 0-48Z"></path><path d="M192 232A128 128 0 0 1 16 80h86.4a48 48 0 0 0 0 96Z"></path></svg>
         Add to Chrome
       </a>
@@ -109,14 +130,14 @@
       </a>
     </div>
 
-    <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
+    <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one‑time</strong> payment. No subscriptions.</p>
 
     <section aria-labelledby="features">
       <div class="feature-grid" id="features">
         <article class="card">
           <h3>📋 Paste Snippets Anywhere in Chrome</h3>
           <ul>
-            <li>Right-click any text box to insert a saved snippet instantly</li>
+            <li>Right‑click any text box to insert a saved snippet instantly</li>
             <li>Works in Gmail, Google Docs, LinkedIn, Salesforce, Five9, and more</li>
           </ul>
         </article>
@@ -133,12 +154,12 @@
           <h3>🆓 Free + Pro</h3>
           <ul>
             <li>Free: save 3 snippets</li>
-            <li>Pro: unlock 15 snippet slots (lifetime, one-time payment)</li>
+            <li>Pro: unlock 15 snippet slots (lifetime, one‑time payment)</li>
           </ul>
         </article>
 
         <article class="card">
-          <h3>🎯 Lightweight, Instant-Load Productivity</h3>
+          <h3>🎯 Lightweight, Instant‑Load Productivity</h3>
           <ul>
             <li>Minimal footprint and fast load</li>
             <li>Built for reps, writers, and anyone who types a lot</li>
@@ -152,9 +173,9 @@
       <div class="gallery">
         <div>
           <a href="screenshots/gallery-1.png" target="_blank" rel="noopener">
-            <img src="screenshots/gallery-1.png" alt="Right-click menu showing saved snippets">
+            <img src="screenshots/gallery-1.png" alt="Right‑click menu showing saved snippets">
           </a>
-          <div class="caption">Right-click → insert a snippet instantly</div>
+          <div class="caption">Right‑click → insert a snippet instantly</div>
         </div>
         <div>
           <a href="screenshots/gallery-2.png" target="_blank" rel="noopener">
@@ -182,10 +203,6 @@
         </div>
       </div>
     </section>
-
-    <h3 class="demo-title">🎥 See Custom Text Inputs in Action</h3>
-    <img src="custom-text-inputs-demo-part1.gif" alt="Demo: selecting and inserting a snippet with right-click" class="screenshot">
-    <img src="custom-text-inputs-demo-part2.gif" alt="Demo: organizing snippets in Pro with drag-and-drop" class="screenshot">
   </main>
 
   <footer>
@@ -199,6 +216,7 @@
   </footer>
 
   <script>
+    // Replace "Add to Chrome" after detecting installed extension (best-effort)
     const EXTENSION_ID = "gacponfghjpmfofhnglnjbebggdkpamc";
     if (typeof chrome !== "undefined" && chrome.runtime) {
       try {
