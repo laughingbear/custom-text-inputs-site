@@ -25,6 +25,7 @@
   <style>
     :root{
       --bg:#ffffff; --ink:#222; --muted:#666; --brand:#0a0a23;
+      --brand-light:#2a2a4a; /* lighter tint for footer */
       --cta:#0ea5e9; --cta-hover:#0284c7; --pro:#22c55e;
       --chip:#f7f7f7; --border:#e5e7eb; --shadow:0 6px 18px rgba(0,0,0,.08);
     }
@@ -37,7 +38,7 @@
     .logo{width:64px; height:64px; filter:brightness(1.15) contrast(1.1)}
     h1{margin:8px 0 0; font-size:2rem}
     .subhead{margin:10px 0 0; font-size:1.05rem; color:#e8e8ff}
-    .keyword-sub{margin-top:8px; font-size:.98rem; color:#cfd3ff}
+    .keyword-sub{margin-top:8px; font-size:1rem; color:#cfd3ff}
 
     /* Layout */
     main{padding:40px 20px; max-width:1000px; margin:0 auto}
@@ -60,15 +61,17 @@
     /* Gallery */
     .gallery{display:grid; grid-template-columns:1fr; gap:20px; margin:34px 0}
     .gallery figure{margin:0; background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden; box-shadow:var(--shadow)}
-    /* This frame ensures every tile is consistent without you resizing images */
     .frame{position:relative; aspect-ratio:16/10; width:100%; overflow:hidden}
     .frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; image-rendering:auto; transition:transform .18s ease}
     .gallery a:hover .frame img{transform:scale(1.01)}
     .caption{font-size:.9rem; color:var(--muted); padding:10px 12px}
 
     /* Footer */
-    footer{border-top:1px solid var(--border); text-align:center; padding:22px; font-size:.92rem; color:var(--muted)}
+    footer{background:var(--brand-light); color:#fff; text-align:center; padding:22px; font-size:.92rem}
     .footer-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:8px}
+    .footer-links a{color:#cfd3ff; text-decoration:none}
+    .footer-links a:hover{color:#fff}
+    .trust-line{margin-top:8px; font-size:.85rem; color:#b5b8e0}
 
     /* Responsive */
     @media (min-width: 740px){
@@ -76,10 +79,9 @@
       .gallery{grid-template-columns:1fr 1fr}
     }
     @media (min-width: 1040px){
-      .gallery{grid-template-columns:1fr 1fr 1fr} /* 2 rows of 3 for six images */
+      .gallery{grid-template-columns:1fr 1fr 1fr}
     }
 
-    /* Accessibility helper */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 </head>
@@ -91,7 +93,7 @@
       <h1>Custom Text Inputs – Chrome Text Expander & Snippet Manager</h1>
     </div>
     <p class="subhead">Save time. Paste smarter. One right-click is all it takes.</p>
-    <p class="keyword-sub">A fast, privacy-first Chrome text expander. Save and paste your most-used snippets anywhere you type — Gmail, Google Docs, LinkedIn, Salesforce, and more.</p>
+    <p class="keyword-sub">A fast, privacy-first Chrome text expander and snippet manager — save and paste your most-used text anywhere you type in Chrome.</p>
   </header>
 
   <main>
@@ -139,7 +141,6 @@
       </div>
     </section>
 
-    <!-- Gallery with 6 screenshots -->
     <section aria-labelledby="gallery">
       <h2 id="gallery" class="sr-only">Screenshots</h2>
       <div class="gallery">
@@ -191,7 +192,7 @@
         <figure>
           <a href="screenshots/gallery-6.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-6.png" alt="Extra example of snippet usage">
+              <img src="screenshots/gallery-6.png" alt="Snippet being used inside a CRM tool example">
             </div>
           </a>
           <figcaption class="caption">Extra example of snippet usage</figcaption>
@@ -207,11 +208,11 @@
       <a href="privacy.html">Privacy Policy</a>
       <a href="mailto:bearsemail@gmail.com">Contact</a>
     </nav>
+    <div class="trust-line">✅ No tracking • All data stored locally in your browser</div>
     © 2025 Custom Text Inputs. All rights reserved.
   </footer>
 
   <script>
-    /* Replace the install button with a notice if the extension is already installed */
     const EXTENSION_ID = "gacponfghjpmfofhnglnjbebggdkpamc";
     if (typeof chrome !== "undefined" && chrome.runtime) {
       try {
