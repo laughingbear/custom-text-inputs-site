@@ -22,10 +22,13 @@
   <meta name="twitter:description" content="Paste snippets anywhere in Chrome with one right-click. Free (3 slots) or Pro (15 slots, one-time).">
   <meta name="twitter:image" content="logo.png">
 
-  <!-- Favicons -->
+  <!-- Favicons (working paths) -->
   <link rel="icon" type="image/png" sizes="16x16" href="screenshots/fav16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="screenshots/fav32.png">
   <link rel="icon" type="image/png" sizes="48x48" href="screenshots/fav48.png">
+
+  <!-- Preload tiny logo for faster first paint -->
+  <link rel="preload" as="image" href="logo.png" imagesrcset="logo.png" />
 
   <style>
     :root{
@@ -112,7 +115,8 @@
 
   <header>
     <div class="header-wrap" role="img" aria-label="Custom Text Inputs logo and title">
-      <img class="logo" src="logo.png" alt="Custom Text Inputs logo">
+      <img class="logo" src="logo.png" alt="Custom Text Inputs logo"
+           width="64" height="64" fetchpriority="high" decoding="async">
       <h1>Custom Text Inputs – Chrome Text Expander & Snippet Manager</h1>
     </div>
     <p class="subhead">Save time. Paste smarter. One right-click is all it takes.</p>
@@ -131,17 +135,19 @@
 
     <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
 
-    <!-- MP4 showcase (lazy-loaded) -->
+    <!-- MP4 showcase (lazy-loaded, keep working filename: CST2.mp4) -->
     <a href="CST2.mp4" target="_blank" rel="noopener" class="video-showcase" aria-label="Play demo video in a new tab">
-      <!-- data-src is swapped into src when in view -->
       <video
         autoplay
         loop
         muted
         playsinline
         preload="none"
+        poster="logo.png"
         data-video-lazy
         data-src="CST2.mp4">
+        <!-- Set a type for better negotiation once src is applied -->
+        <source src="" type="video/mp4">
       </video>
     </a>
 
@@ -184,7 +190,7 @@
         <figure>
           <a href="screenshots/gallery-1.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-1.png" alt="Right-click menu showing saved snippets">
+              <img src="screenshots/gallery-1.png" alt="Right-click menu showing saved snippets" loading="lazy" decoding="async">
             </div>
           </a>
           <figcaption class="caption">Right-click → insert a snippet instantly</figcaption>
@@ -193,7 +199,7 @@
         <figure>
           <a href="screenshots/gallery-2.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-2.png" alt="Organizing and naming snippets in the options page">
+              <img src="screenshots/gallery-2.png" alt="Organizing and naming snippets in the options page" loading="lazy" decoding="async">
             </div>
           </a>
           <figcaption class="caption">Organize and rename your snippets</figcaption>
@@ -202,7 +208,7 @@
         <figure>
           <a href="screenshots/gallery-3.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-3.png" alt="Import and export snippets for backup">
+              <img src="screenshots/gallery-3.png" alt="Import and export snippets for backup" loading="lazy" decoding="async">
             </div>
           </a>
           <figcaption class="caption">Import / export for quick backup</figcaption>
@@ -211,7 +217,7 @@
         <figure>
           <a href="screenshots/gallery-4.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-4.png" alt="Snippet editing interface with counts">
+              <img src="screenshots/gallery-4.png" alt="Snippet editing interface with counts" loading="lazy" decoding="async">
             </div>
           </a>
           <figcaption class="caption">Clean editing with character counts</figcaption>
@@ -220,7 +226,7 @@
         <figure>
           <a href="screenshots/gallery-5.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-5.png" alt="Using a snippet in Gmail compose window">
+              <img src="screenshots/gallery-5.png" alt="Using a snippet in Gmail compose window" loading="lazy" decoding="async">
             </div>
           </a>
           <figcaption class="caption">Works across popular sites</figcaption>
@@ -229,7 +235,7 @@
         <figure>
           <a href="screenshots/gallery-6.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-6.png" alt="Snippet being used inside a CRM tool example">
+              <img src="screenshots/gallery-6.png" alt="Snippet being used inside a CRM tool example" loading="lazy" decoding="async">
             </div>
           </a>
           <figcaption class="caption">Extra example of snippet usage</figcaption>
@@ -250,30 +256,31 @@
   </footer>
 
   <script>
-    // Lazy-load the hero video
+    // Lazy-load the hero video (keeps your working behavior)
     (function () {
       const vid = document.querySelector('[data-video-lazy]');
       if (!vid) return;
 
       const loadVideo = () => {
         if (!vid.src) {
+          // apply src from data attribute
           vid.src = vid.dataset.src;
-          // Ensure the browser initializes the media element
           try { vid.load(); } catch(_) {}
-          // Try to play (may be blocked on some browsers, but muted usually allows it)
+          // try to play (muted should allow autoplay)
           vid.play && vid.play().catch(() => {});
         }
       };
 
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
-          entries.forEach(e => {
+          for (const e of entries) {
             if (e.isIntersecting) {
               loadVideo();
               io.disconnect();
+              break;
             }
-          });
-        }, { rootMargin: '200px' }); // start loading just before it scrolls into view
+          }
+        }, { rootMargin: '200px' });
         io.observe(vid);
       } else {
         // Fallback for very old browsers
