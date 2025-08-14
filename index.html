@@ -22,11 +22,10 @@
   <meta name="twitter:description" content="Paste snippets anywhere in Chrome with one right-click. Free (3 slots) or Pro (15 slots, one-time).">
   <meta name="twitter:image" content="logo.png">
 
-  <!-- Single inline favicon (prevents 404s, zero requests) -->
-  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" ry="12" fill="%230a0a23"/><path d="M12 14h40v26H28l-8 10v-10H12z" fill="%23ffffff"/></svg>'>
-
-  <!-- Preload the tiny header logo to paint fast -->
-  <link rel="preload" as="image" href="logo.png" imagesrcset="logo.png" fetchpriority="high">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="screenshots/fav16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="screenshots/fav32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="screenshots/fav48.png">
 
   <style>
     :root{
@@ -81,11 +80,13 @@
       box-shadow:var(--shadow);
       overflow:hidden;
       max-width:100%;
+      text-decoration:none;
     }
     .video-showcase video{
       display:block;
       width:100%;
       height:auto;
+      background:#111; /* prevents flash before first paint */
     }
 
     /* Footer */
@@ -111,7 +112,7 @@
 
   <header>
     <div class="header-wrap" role="img" aria-label="Custom Text Inputs logo and title">
-      <img class="logo" src="logo.png" alt="Custom Text Inputs logo" width="64" height="64" fetchpriority="high" decoding="async">
+      <img class="logo" src="logo.png" alt="Custom Text Inputs logo">
       <h1>Custom Text Inputs – Chrome Text Expander & Snippet Manager</h1>
     </div>
     <p class="subhead">Save time. Paste smarter. One right-click is all it takes.</p>
@@ -130,13 +131,19 @@
 
     <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
 
-    <!-- MP4 Showcase (absolute URL to avoid path quirks across browsers) -->
-    <div class="video-showcase">
-      <video autoplay muted loop playsinline preload="metadata" poster="logo.png">
-        <source src="https://laughingbear.github.io/custom-text-inputs-site/cst2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+    <!-- MP4 showcase (lazy-loaded) -->
+    <a href="CST2.mp4" target="_blank" rel="noopener" class="video-showcase" aria-label="Play demo video in a new tab">
+      <!-- data-src is swapped into src when in view -->
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="none"
+        data-video-lazy
+        data-src="CST2.mp4">
       </video>
-    </div>
+    </a>
 
     <section aria-labelledby="features">
       <div class="feature-grid" id="features">
@@ -177,7 +184,7 @@
         <figure>
           <a href="screenshots/gallery-1.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-1.png" alt="Right-click menu showing saved snippets" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="screenshots/gallery-1.png" alt="Right-click menu showing saved snippets">
             </div>
           </a>
           <figcaption class="caption">Right-click → insert a snippet instantly</figcaption>
@@ -186,7 +193,7 @@
         <figure>
           <a href="screenshots/gallery-2.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-2.png" alt="Organizing and naming snippets in the options page" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="screenshots/gallery-2.png" alt="Organizing and naming snippets in the options page">
             </div>
           </a>
           <figcaption class="caption">Organize and rename your snippets</figcaption>
@@ -195,7 +202,7 @@
         <figure>
           <a href="screenshots/gallery-3.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-3.png" alt="Import and export snippets for backup" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="screenshots/gallery-3.png" alt="Import and export snippets for backup">
             </div>
           </a>
           <figcaption class="caption">Import / export for quick backup</figcaption>
@@ -204,7 +211,7 @@
         <figure>
           <a href="screenshots/gallery-4.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-4.png" alt="Snippet editing interface with counts" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="screenshots/gallery-4.png" alt="Snippet editing interface with counts">
             </div>
           </a>
           <figcaption class="caption">Clean editing with character counts</figcaption>
@@ -213,7 +220,7 @@
         <figure>
           <a href="screenshots/gallery-5.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-5.png" alt="Using a snippet in Gmail compose window" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="screenshots/gallery-5.png" alt="Using a snippet in Gmail compose window">
             </div>
           </a>
           <figcaption class="caption">Works across popular sites</figcaption>
@@ -222,7 +229,7 @@
         <figure>
           <a href="screenshots/gallery-6.png" target="_blank" rel="noopener">
             <div class="frame">
-              <img src="screenshots/gallery-6.png" alt="Snippet being used inside a CRM tool example" loading="lazy" decoding="async" fetchpriority="low">
+              <img src="screenshots/gallery-6.png" alt="Snippet being used inside a CRM tool example">
             </div>
           </a>
           <figcaption class="caption">Extra example of snippet usage</figcaption>
@@ -243,6 +250,38 @@
   </footer>
 
   <script>
+    // Lazy-load the hero video
+    (function () {
+      const vid = document.querySelector('[data-video-lazy]');
+      if (!vid) return;
+
+      const loadVideo = () => {
+        if (!vid.src) {
+          vid.src = vid.dataset.src;
+          // Ensure the browser initializes the media element
+          try { vid.load(); } catch(_) {}
+          // Try to play (may be blocked on some browsers, but muted usually allows it)
+          vid.play && vid.play().catch(() => {});
+        }
+      };
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              loadVideo();
+              io.disconnect();
+            }
+          });
+        }, { rootMargin: '200px' }); // start loading just before it scrolls into view
+        io.observe(vid);
+      } else {
+        // Fallback for very old browsers
+        document.addEventListener('DOMContentLoaded', loadVideo);
+      }
+    })();
+
+    // Replace "Add to Chrome" if extension is already installed
     const EXTENSION_ID = "gacponfghjpmfofhnglnjbebggdkpamc";
     if (typeof chrome !== "undefined" && chrome.runtime) {
       try {
@@ -267,4 +306,3 @@
   </script>
 </body>
 </html>
-
