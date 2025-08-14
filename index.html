@@ -22,10 +22,10 @@
   <meta name="twitter:description" content="Paste snippets anywhere in Chrome with one right-click. Free (3 slots) or Pro (15 slots, one-time).">
   <meta name="twitter:image" content="logo.png">
 
-  <!-- Favicons (PNG, multiple sizes you uploaded under /screenshots) -->
-  <link rel="icon" type="image/png" sizes="16x16" href="screenshots/fav16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="screenshots/fav32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="screenshots/fav48.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="fav16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="fav32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="fav48.png">
 
   <style>
     :root{
@@ -71,8 +71,8 @@
     .gallery a:hover .frame img{transform:scale(1.01)}
     .caption{font-size:.9rem; color:var(--muted); padding:10px 12px}
 
-    /* Video showcase (MP4) */
-    .gif-showcase{
+    /* Video showcase */
+    .video-showcase{
       display:block;
       margin:40px auto;
       border:1px solid var(--border);
@@ -80,9 +80,12 @@
       box-shadow:var(--shadow);
       overflow:hidden;
       max-width:100%;
-      background:#111; /* nice placeholder while metadata loads */
     }
-    .gif-showcase video{display:block; width:100%; height:auto}
+    .video-showcase video{
+      display:block;
+      width:100%;
+      height:auto;
+    }
 
     /* Footer */
     footer{background:var(--brand-light); color:#fff; text-align:center; padding:22px; font-size:.92rem}
@@ -107,14 +110,7 @@
 
   <header>
     <div class="header-wrap" role="img" aria-label="Custom Text Inputs logo and title">
-      <!-- Higher priority tiny logo to render immediately -->
-      <img
-        class="logo"
-        src="logo.png"
-        alt="Custom Text Inputs logo"
-        width="64" height="64"
-        fetchpriority="high"
-        decoding="async">
+      <img class="logo" src="logo.png" alt="Custom Text Inputs logo" fetchpriority="high" decoding="async">
       <h1>Custom Text Inputs – Chrome Text Expander & Snippet Manager</h1>
     </div>
     <p class="subhead">Save time. Paste smarter. One right-click is all it takes.</p>
@@ -133,19 +129,11 @@
 
     <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
 
-    <!-- Showcase (MP4 hero, click-to-open in new tab) -->
-    <a href="CST2.mp4" target="_blank" rel="noopener" class="gif-showcase" aria-label="Play demo video in a new tab">
-      <video
-        autoplay
-        loop
-        muted
-        playsinline
-        preload="metadata"
-        poster="screenshots/gallery-1.png">
-        <source src="CST2.mp4" type="video/mp4">
-        Sorry, your browser doesn’t support embedded MP4 video.
-      </video>
-    </a>
+    <!-- MP4 Showcase -->
+    <video class="video-showcase" autoplay muted loop playsinline>
+      <source src="cst2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
     <section aria-labelledby="features">
       <div class="feature-grid" id="features">
