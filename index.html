@@ -58,6 +58,12 @@
     .card ul{margin:.2rem 0 0 1.2rem}
     .card li{margin:.2rem 0}
 
+    /* Demo (GIF) */
+    .demo{margin:28px 0 10px}
+    .demo figure{margin:0; background:#fff; border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow)}
+    .demo .frame{position:relative; aspect-ratio:16/9; width:100%; overflow:hidden}
+    .demo .frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; image-rendering:auto}
+
     /* Gallery */
     .gallery{display:grid; grid-template-columns:1fr; gap:20px; margin:34px 0}
     .gallery figure{margin:0; background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden; box-shadow:var(--shadow)}
@@ -107,6 +113,19 @@
     </div>
 
     <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
+
+    <!-- ===== Demo GIF (edge-to-edge inside <main>) ===== -->
+    <section class="demo" aria-labelledby="demo">
+      <h2 id="demo" class="sr-only">Demo</h2>
+      <figure>
+        <div class="frame">
+          <img src="CST.gif"
+               alt="Custom Text Inputs in action: right-click to insert a saved snippet instantly"
+               loading="eager" decoding="async">
+        </div>
+      </figure>
+    </section>
+    <!-- ================================================ -->
 
     <section aria-labelledby="features">
       <div class="feature-grid" id="features">
