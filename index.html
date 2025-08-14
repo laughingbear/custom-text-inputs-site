@@ -22,7 +22,7 @@
   <meta name="twitter:description" content="Paste snippets anywhere in Chrome with one right-click. Free (3 slots) or Pro (15 slots, one-time).">
   <meta name="twitter:image" content="logo.png">
 
-  <!-- Favicons (single inline SVG to avoid 404s/extra requests) -->
+  <!-- Single inline favicon (prevents 404s, zero requests) -->
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" ry="12" fill="%230a0a23"/><path d="M12 14h40v26H28l-8 10v-10H12z" fill="%23ffffff"/></svg>'>
 
   <!-- Preload the tiny header logo to paint fast -->
@@ -130,10 +130,10 @@
 
     <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
 
-    <!-- MP4 Showcase (metadata only, with poster to avoid eager decode) -->
+    <!-- MP4 Showcase (absolute URL to avoid path quirks across browsers) -->
     <div class="video-showcase">
       <video autoplay muted loop playsinline preload="metadata" poster="logo.png">
-        <source src="cst2.mp4" type="video/mp4">
+        <source src="https://laughingbear.github.io/custom-text-inputs-site/cst2.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -267,3 +267,4 @@
   </script>
 </body>
 </html>
+
