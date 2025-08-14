@@ -9,6 +9,11 @@
   <meta name="description" content="Custom Text Inputs is a fast, privacy-first Chrome text expander. Save and paste your most-used snippets anywhere you type — Gmail, Google Docs, LinkedIn, Salesforce, and more. Free (3 slots) or Pro (15 slots, one-time).">
   <link rel="canonical" href="https://laughingbear.github.io/custom-text-inputs-site/">
 
+  <!-- Favicons -->
+  <link rel="icon" href="screenshots/fav16.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="screenshots/fav32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="screenshots/fav48.png" sizes="48x48" type="image/png">
+
   <!-- Open Graph -->
   <meta property="og:title" content="Custom Text Inputs – Chrome Text Expander & Snippet Manager">
   <meta property="og:description" content="Paste snippets anywhere in Chrome with one right-click. Free (3 slots) or Pro (15 slots, one-time).">
@@ -66,7 +71,7 @@
     .gallery a:hover .frame img{transform:scale(1.01)}
     .caption{font-size:.9rem; color:var(--muted); padding:10px 12px}
 
-    /* Showcase (video) */
+    /* GIF showcase */
     .gif-showcase{
       display:block;
       margin:40px auto;
@@ -75,13 +80,11 @@
       box-shadow:var(--shadow);
       overflow:hidden;
       max-width:100%;
-      text-decoration:none;
     }
-    .gif-showcase video{
+    .gif-showcase img, .gif-showcase video{
       display:block;
       width:100%;
       height:auto;
-      background:#111; /* prevents flash before first paint */
     }
 
     /* Footer */
@@ -126,19 +129,13 @@
 
     <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
 
-    <!-- Showcase (MP4 only; no inline GIF so the GIF isn't fetched) -->
+    <!-- Showcase: MP4 with fallback GIF -->
     <a href="CST2.mp4" target="_blank" rel="noopener" class="gif-showcase" aria-label="Play demo video in a new tab">
-      <video autoplay loop muted playsinline preload="metadata" poster="screenshots/gallery-1.png">
+      <video autoplay loop muted playsinline preload="metadata" poster="CST.gif">
         <source src="CST2.mp4" type="video/mp4">
+        <img src="CST.gif" alt="Custom Text Inputs demo animation">
       </video>
     </a>
-
-    <!-- Optional: only loads if JS is disabled -->
-    <noscript>
-      <a href="CST.gif" target="_blank" rel="noopener" class="gif-showcase">
-        <img src="CST.gif" alt="Custom Text Inputs demo animation" style="display:block;width:100%;height:auto">
-      </a>
-    </noscript>
 
     <section aria-labelledby="features">
       <div class="feature-grid" id="features">
