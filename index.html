@@ -66,7 +66,7 @@
     .gallery a:hover .frame img{transform:scale(1.01)}
     .caption{font-size:.9rem; color:var(--muted); padding:10px 12px}
 
-    /* GIF showcase */
+    /* Showcase (video) */
     .gif-showcase{
       display:block;
       margin:40px auto;
@@ -75,7 +75,9 @@
       box-shadow:var(--shadow);
       overflow:hidden;
       max-width:100%;
+      text-decoration:none;
     }
+    .gif-showcase video,
     .gif-showcase img{
       display:block;
       width:100%;
@@ -124,9 +126,14 @@
 
     <p class="note">Free (3 slots). Pro unlocks <strong>15 snippet slots</strong> with a <strong>one-time</strong> payment. No subscriptions.</p>
 
-    <!-- GIF Showcase with click-to-open -->
-    <a href="CST.gif" target="_blank" rel="noopener" class="gif-showcase">
-      <img src="CST.gif" alt="Custom Text Inputs demo animation">
+    <!-- Showcase (now using MP4 video with GIF fallback, click-to-open) -->
+    <a href="CST2.mp4" target="_blank" rel="noopener" class="gif-showcase" aria-label="Play demo video in a new tab">
+      <video autoplay loop muted playsinline preload="metadata"
+             style="background:#111"> <!-- background guards against flash before first frame -->
+        <source src="CST2.mp4" type="video/mp4">
+        <!-- Fallback image if video can't play -->
+        <img src="CST.gif" alt="Custom Text Inputs demo animation">
+      </video>
     </a>
 
     <section aria-labelledby="features">
